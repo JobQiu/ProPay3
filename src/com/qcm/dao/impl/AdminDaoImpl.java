@@ -54,6 +54,9 @@ public class AdminDaoImpl implements IAdminDao {
 		for (Admin admin : admins) {
 			System.out.println(admin.getAdminName());
 		}
+		Counter counter = new Counter();
+		counter.setId(1);
+		a.freezeCounter(counter);
 	}
 
 	public boolean checkAdmin(Admin admin) {
@@ -137,6 +140,13 @@ public class AdminDaoImpl implements IAdminDao {
 	@Override
 	public boolean freezeCounter(Counter counter) {
 		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+
+		counter = session.load(Counter.class, counter.getId());
+		counter.setState(0);
+		transaction.commit();
+		session.close();
 		return false;
 	}
 
