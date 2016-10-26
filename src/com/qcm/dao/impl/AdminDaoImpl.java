@@ -56,7 +56,7 @@ public class AdminDaoImpl implements IAdminDao {
 		}
 		Counter counter = new Counter();
 		counter.setId(1);
-		a.freezeCounter(counter);
+		a.freezeCounter(1);
 	}
 
 	public boolean checkAdmin(Admin admin) {
@@ -138,12 +138,12 @@ public class AdminDaoImpl implements IAdminDao {
 	}
 
 	@Override
-	public boolean freezeCounter(Counter counter) {
+	public boolean freezeCounter(Integer id) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 
-		counter = session.load(Counter.class, counter.getId());
+		Counter counter = session.get(Counter.class, id);
 		counter.setState(0);
 		transaction.commit();
 		session.close();
@@ -151,8 +151,15 @@ public class AdminDaoImpl implements IAdminDao {
 	}
 
 	@Override
-	public boolean warmCounter(Counter counter) {
+	public boolean warmCounter(Integer id) {
 		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+
+		Counter counter = session.get(Counter.class, id);
+		counter.setState(1);
+		transaction.commit();
+		session.close();
 		return false;
 	}
 

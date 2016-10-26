@@ -27,14 +27,14 @@ public class Admin {
 	}
 
 	@RequestMapping("/showUsers")
-	public String hello(HttpSession session) {
-		List<Counter> counters = a.counterList(1, Constant.PAGE_NUMBER);
+	public String hello(HttpSession session, Integer curPage) {
+		if (curPage == null)
+			curPage = 1;
+		List<Counter> counters = a.counterList(curPage, Constant.PAGE_NUMBER);
 		session.setAttribute("counters", counters);
 		Map<String, Object> splitPage = new HashMap<String, Object>();
 		splitPage.put("totalNum", a.countCounter());
-		Integer curPage = (Integer) session.getAttribute("curPage");
-		if (curPage == null)
-			curPage = 1;
+
 		splitPage.put("curPage", curPage);
 		splitPage.put("maxPage", a.countCounter() / Constant.PAGE_NUMBER + 1);
 
@@ -43,8 +43,39 @@ public class Admin {
 	}
 
 	@RequestMapping("/freezeUser")
-	public String freeze(HttpSession session, Integer page) {
+	public String freeze(HttpSession session, Integer id) {
+		a.freezeCounter(id);
+		Integer curPage = (Integer) session.getAttribute("curPage");
+		if (curPage == null)
+			curPage = 1;
+		List<Counter> counters = a.counterList(1, Constant.PAGE_NUMBER);
+		session.setAttribute("counters", counters);
+		Map<String, Object> splitPage = new HashMap<String, Object>();
+		splitPage.put("totalNum", a.countCounter());
 
-		return null;
+		splitPage.put("curPage", curPage);
+		splitPage.put("maxPage", a.countCounter() / Constant.PAGE_NUMBER + 1);
+
+		session.setAttribute("splitPage", splitPage);
+		return "/manager/tab/tab_admin_manaUser";
 	}
+
+	@RequestMapping("/warmUser")
+	public String warm(HttpSession session, Integer id) {
+		a.warmCounter(id);
+		Integer curPage = (Integer) session.getAttribute("curPage");
+		if (curPage == null)
+			curPage = 1;
+		List<Counter> counters = a.counterList(1, Constant.PAGE_NUMBER);
+		session.setAttribute("counters", counters);
+		Map<String, Object> splitPage = new HashMap<String, Object>();
+		splitPage.put("totalNum", a.countCounter());
+
+		splitPage.put("curPage", curPage);
+		splitPage.put("maxPage", a.countCounter() / Constant.PAGE_NUMBER + 1);
+
+		session.setAttribute("splitPage", splitPage);
+		return "/manager/tab/tab_admin_manaUser";
+	}
+
 }
