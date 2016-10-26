@@ -1,0 +1,50 @@
+package com.qcm.controller;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.qcm.constant.Constant;
+import com.qcm.dao.impl.AdminDaoImpl;
+import com.qcm.entity.Counter;
+
+@Controller
+@RequestMapping("/admin")
+public class Admin {
+	private AdminDaoImpl a;
+
+	public AdminDaoImpl getA() {
+		return a;
+	}
+
+	public void setA(AdminDaoImpl a) {
+		this.a = a;
+	}
+
+	@RequestMapping("/showUsers")
+	public String hello(HttpSession session) {
+		List<Counter> counters = a.counterList(1, Constant.PAGE_NUMBER);
+		session.setAttribute("counters", counters);
+		Map<String, Object> splitPage = new HashMap<String, Object>();
+		splitPage.put("totalNum", a.countCounter());
+		Integer curPage = (Integer) session.getAttribute("curPage");
+		if (curPage == null)
+			curPage = 1;
+		splitPage.put("curPage", curPage);
+		splitPage.put("maxPage", a.countCounter() / Constant.PAGE_NUMBER + 1);
+
+		session.setAttribute("splitPage", splitPage);
+		return "/manager/tab/tab_admin_manaUser";
+	}
+
+	@RequestMapping("/freezeUser")
+	public String freeze(HttpSession session, Integer page) {
+
+		return null;
+	}
+}
