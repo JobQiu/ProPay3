@@ -231,6 +231,8 @@ public class Counter implements java.io.Serializable {
 	}
 
 	public String getStateToString() {
+		if (state == null)
+			state = 1;
 		if (state == 1)
 			return "已启用";
 		else {

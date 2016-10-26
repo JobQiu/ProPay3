@@ -7,5 +7,5 @@ public class Constant {
 	// 加密的次数 5 次
 	public static final int PWD_COUNT = 5;
 	// 每页的项数
-	public static final int PAGE_NUMBER = 5;
+	public static final int PAGE_NUMBER = 15;
 }

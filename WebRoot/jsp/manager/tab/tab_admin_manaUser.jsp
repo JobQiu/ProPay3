@@ -297,6 +297,11 @@ $(function(){
 </table>
 <input type="hidden" name="key" value="${sessionScope.splitPage.key}" />
 </form>
+<form>
 
+账户：<input type="text" name="user_counter">
+姓名：<input type="text" name="card_name">
+<input type="submit" value="搜索"/>
+</form>
 </body>
 </html>
