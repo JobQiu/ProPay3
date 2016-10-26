@@ -158,7 +158,7 @@ $(function(){
             <td width="46%" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="5%"><div align="center"><img src="<%=basePath%>jsp/manager/tab/images/tb.gif" width="16" height="16" /></div></td>
-                <td width="95%" class="STYLE1"><span class="STYLE3">你当前的位置</span>：[业务中心]-[我的邮件]</td>
+                <td width="95%" class="STYLE1"><span class="STYLE3">你当前的位置</span>：[用户管理]-[查看用户]</td>
               </tr>
             </table></td>
             <td width="54%"><table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -227,7 +227,7 @@ $(function(){
 			<td width="3%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1">
 				<div align="center">状态</div>
 			</td>
-			<td width="6%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1">
+			<td width="9%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1">
 				<div align="center">操作</div>
 			</td>
           </tr>
@@ -259,7 +259,7 @@ $(function(){
               <div align="center">${map.stateToString}</div>
             </div></td>
             <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
-              <div align="center"><a href="freezeUser?id=${map.id}">冻结</a> <a href="warmUser?id=${map.id}">启用</a></div>
+              <div align="center"><a href="freezeUser?id=${map.id}">冻结</a> <a href="warmUser?id=${map.id}">启用</a> <a href="resetPwd?id=${map.id}">重置密码</a></div>
             </div></td>
           </tr>
            </c:forEach>

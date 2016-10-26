@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,8 @@ import com.qcm.entity.Counter;
 @Controller
 @RequestMapping("/admin")
 public class Admin {
+
+	@Resource
 	private AdminDaoImpl a;
 
 	public AdminDaoImpl getA() {
@@ -78,4 +81,8 @@ public class Admin {
 		return "/manager/tab/tab_admin_manaUser";
 	}
 
+	@RequestMapping("/resetPwd")
+	public String resetPwd() {
+		return "/manager/tab/tab_admin_resetUserCode";
+	}
 }

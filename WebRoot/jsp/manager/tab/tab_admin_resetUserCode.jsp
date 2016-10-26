@@ -158,7 +158,7 @@ $(function(){
             <td width="46%" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="5%"><div align="center"><img src="<%=basePath%>jsp/manager/tab/images/tb.gif" width="16" height="16" /></div></td>
-                <td width="95%" class="STYLE1"><span class="STYLE3">你当前的位置</span>：[业务中心]-[我的邮件]</td>
+                <td width="95%" class="STYLE1"><span class="STYLE3">你当前的位置</span>：[用户管理]-[重置用户密码]</td>
               </tr>
             </table></td>
             <td width="54%"><table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -166,28 +166,21 @@ $(function(){
                 <td width="60"><table width="87%" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td class="STYLE1"><div align="center">
-                      <input id="checkAll" type="checkbox" name="checkbox62" value="checkbox" />
-                    </div></td>
-                    <td class="STYLE1"><div align="center">全选</div></td>
+                      </div></td>
+                    <td class="STYLE1"><div align="center"></div></td>
                   </tr>
                 </table></td>
                 <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td class="STYLE1"><div align="center"><img src="<%=basePath%>jsp/manager/tab/images/22.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center"><a href="javascript:openwindow()">新增</a></div></td>
-                  </tr>
+                     </tr>
                 </table></td>
                 <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td class="STYLE1"><div align="center"><img src="<%=basePath%>jsp/manager/tab/images/33.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center">修改</div></td>
-                  </tr>
+                     </tr>
                 </table></td>
                 <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
                   <tr id="delAll" >
-                    <td class="STYLE1"><div align="center"><img src="<%=basePath%>jsp/manager/tab/images/11.gif" width="14" height="14" /></div></td>
-                    <td class="STYLE1"><div align="center"><a href = "javascript:void(0)">删除</a></div></td>
-                  </tr>
+                    </tr>
                 </table></td>
               </tr>
             </table></td>
@@ -203,97 +196,32 @@ $(function(){
         <td width="8" background="<%=basePath%>jsp/manager/tab/images/tab_12.gif">&nbsp;</td>
         <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-			<td width="3%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1">
-				<div align="center">id</div>
-			</td>
-			<td width="8%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1">
-				<div align="center">账户</div>
-			</td>
-			<td width="8%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1">
-				<div align="center">余额</div>
-			</td>
-			<td width="8%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1">
-				<div align="center">姓名</div>
-			</td>
-			<td width="25%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1">
-				<div align="center">地址</div>
-			</td>
-			<td width="15%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1">
-				<div align="center">身份证</div>
-			</td>
-			<td width="8%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1">
-				<div align="center">手机</div>
-			</td>
-			<td width="3%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1">
-				<div align="center">状态</div>
-			</td>
-			<td width="6%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1">
-				<div align="center">操作</div>
-			</td>
-          </tr>
-          <tbody>
-          <c:forEach items="${sessionScope.counters}" var="map" >
-            <tr>
-            <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
-              <div align="center">${map.id}</div>
-            </div></td>
-            <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
-              <div align="center">${map.userCounter}</div>
-            </div></td>
-            <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
-              <div align="center">${map.balance}</div>
-            </div></td>
-            <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
-              <div align="center">${map.cardName}</div>
-            </div></td>
-            <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
-              <div align="center">${map.address}</div>
-            </div></td>
-            <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
-              <div align="center">${map.cardNumber}</div>
-            </div></td>
-             <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
-              <div align="center">${map.userPhone}</div>
-            </div></td>
-            <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
-              <div align="center">${map.stateToString}</div>
-            </div></td>
-            <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
-              <div align="center"><a href="freezeUser?id=${map.id}">冻结</a> <a href="warmUser?id=${map.id}">启用</a></div>
-            </div></td>
-          </tr>
-           </c:forEach>
-          </tbody>
+		  </tr>
         </table></td>
         <td width="8" background="<%=basePath%>jsp/manager/tab/images/tab_15.gif">&nbsp;</td>
       </tr>
     </table></td>
   </tr>
+
+</table>
+<table>
   <tr>
-    <td height="35" background="<%=basePath%>jsp/manager/tab/images/tab_19.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="12" height="35"><img src="<%=basePath%>jsp/manager/tab/images/tab_18.gif" width="12" height="35" /></td>
-        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td class="STYLE4">&nbsp;&nbsp;共有${sessionScope.splitPage.totalNum} 条记录，当前第${sessionScope.splitPage.curPage}/${sessionScope.splitPage.maxPage} 页</td>
-            <td><table border="0" align="right" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td width="40"><a href="<%=basePath%>admin/showUsers?curPage=1"><img src="<%=basePath%>jsp/manager/tab/images/first.gif" width="37" height="15" /></a></td>
-                  <td width="45"><a href="<%=basePath%>admin/showUsers?curPage=${sessionScope.splitPage.curPage - 1}"><img src="<%=basePath%>jsp/manager/tab/images/back.gif" width="43" height="15" /></a></td>
-                  <td width="45"><a href="<%=basePath%>admin/showUsers?curPage=${sessionScope.splitPage.curPage + 1}"><img src="<%=basePath%>jsp/manager/tab/images/next.gif" width="43" height="15" /></a></td>
-                  <td width="40"><a href="<%=basePath%>admin/showUsers?curPage=${sessionScope.splitPage.maxPage}"><img src="<%=basePath%>jsp/manager/tab/images/last.gif" width="37" height="15" /></a></td>
-                  <td width="100"><div align="center"><span class="STYLE1">转到第
-                    <input name="curPage" type="text" size="4" style="height:12px; width:20px; border:1px solid #999999;" />
-                    页 </span></div></td>
-                  <td width="40"><button type="submit" ><img src="<%=basePath%>jsp/manager/tab/images/go.gif" width="37" height="15" /></button></td>
-                </tr>
-            </table></td>
-          </tr>
-        </table></td>
-        <td width="16"><img src="<%=basePath%>jsp/manager/tab/images/tab_20.gif" width="16" height="35" /></td>
-      </tr>
-    </table></td>
-  </tr>
+<td>
+  用户名：</td>
+<td> <input type= "text" name="username"></td>
+</tr>
+
+  <tr>
+<td>
+  账户：</td>
+<td> <input type= "text" name="username"></td>
+</tr>
+
+  <tr>
+<td>
+  用户名：</td>
+<td> <input type= "text" name="username"></td>
+</tr>
 </table>
 <input type="hidden" name="key" value="${sessionScope.splitPage.key}" />
 </form>

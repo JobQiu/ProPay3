@@ -74,8 +74,5 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<bean id="admin" class="com.qcm.controller.Admin">
-		<property name="a" ref="adminDaoImpl"></property>
-	</bean>
 	
 </beans>
