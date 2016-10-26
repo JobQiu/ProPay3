@@ -16,7 +16,7 @@ import com.qcm.entity.Counter;
 
 @Controller
 @RequestMapping("/admin")
-public class Admin {
+public class AdminCtrl {
 
 	@Resource
 	private AdminDaoImpl a;
