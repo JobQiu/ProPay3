@@ -1,7 +1,12 @@
 package com.qcm.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,18 +22,25 @@ import com.qcm.util.PwdSecurityUtil;
 
 @Controller
 public class LoginAndRegister {
+	public static String POWER="counter";
+	public static String REMEMBER = "remember";
 	@Resource
 	private CounterDaoImpl  counterDaoImpl;
 	@Resource
 	private AdminDaoImpl adminDaoImpl;
 	@RequestMapping(value="/login")
-	public String login(HttpServletRequest req,@ModelAttribute Admin admin){
+	public String login(HttpServletRequest req,@ModelAttribute Admin admin,HttpSession session){
 		//获取单选的值
 		String power = req.getParameter("power");
+		String remember = req.getParameter("remember");
 		System.out.println(power);
-		if("counter".equals(power)){
+		System.out.println(remember);
+		if(POWER.equals(power)){
 			System.out.println(admin.getAdminName()+"==="+admin.getAdminPassword());
 			if(counterDaoImpl.canlogin(admin)){
+				if(REMEMBER.equals("remember")){
+					session.setAttribute("admin", admin);
+				}
 				return "forward:/hello.jsp";
 			}else{
 				req.getSession().setAttribute("info", "用户名或密码错误!");
@@ -53,6 +65,22 @@ public class LoginAndRegister {
 		m.addAttribute("username", counter.getUserName());
 			return "forward:/index.jsp";
 	}
+	@RequestMapping(value="/canRegister")
+	public void canRegister(String userName,HttpServletResponse resp){
+		boolean result = counterDaoImpl.info(userName);
+		PrintWriter out = null;
+		try {
+			out = resp.getWriter();
+			out.print(result);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		out.flush();
+		out.close();
+	}
+	
 	public CounterDaoImpl getCounterDaoImpl() {
 		return counterDaoImpl;
 	}

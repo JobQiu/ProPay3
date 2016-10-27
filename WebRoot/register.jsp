@@ -36,60 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	</style>
 	<script type="text/javascript">
-		$(function(){
-		var flag = 0;
-			$("#pwd2").keyup(function (e) {
-			var pwd1 = $(this).val();
-			var pwd2 = $("#pwd1").val();
-		lastTime = e.timeStamp;
-		setTimeout(function () {
-		
-		if (lastTime - e.timeStamp == 0) {
-		/* //alert("进来了1");
-			$.ajax({
-				url:"LoginServlet",
-				type:"get",
-				data:{
-				userid:$("#text").val()
-				},
-				success:function(data){
-				//alert(data);
-				var result=data.toString();
-					if(result=="false"){
-						$("#info").html("可以注册!");
-						
-					}
-					if(result=="true"){
-					//alert("进来了2");
-						$("#info").html("用户名已存在！");
-					}
-				}
-			}) */
-			if(pwd1 != pwd2){
-			$(".page-container form").find('.error').fadeOut('fast', function(){
-                $(this).css('top', '165px');
-            });
-				 $(".page-container form").find('.error').fadeIn('fast');
-				 flag=0;
-				}
-				else{
-					flag=1;
-				}
-			}
-		
-		}, 300); 
-	});
-		 $(".page-container form").submit(function(){
-		 		if(flag==1){
-		 			return true;
-		 		}else{
-		 			return false;
-		 		}
-		 
-		 })
-		
-		
-});
+
 	
 	</script>
 </head>
@@ -103,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <h1>Register</h1>
             <form class="m-t" role="form" action="register" method="post">
                 <!-- <div class="form-group"> -->
-                    <input type="text" class="username" placeholder="请输入用户名"  name="userName">
+                    <input type="text" class="username"  id="text" placeholder="请输入用户名"  name="userName">
              <!--    </div> -->
                 <!-- <div class="form-group"> -->
                     <input type="password" class="password"  id="pwd1" placeholder="请输入密码"  name="userPassword">
@@ -130,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <script src="js/supersized.3.2.7.min.js"></script>
         <script src="js/supersized-init.js"></script>
-        <script src="js/registerscripts.js"></script>
+        <script src="js/registerscripts.js"></script> 
     
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>

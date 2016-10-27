@@ -34,8 +34,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="page-container">
             <h1>Login</h1>
             <form action="login" method="post">
-                <input type="text" name="adminName" class="username" placeholder="请输入用户名" value="${username }">
-                <input type="password" name="adminPassword" class="password" placeholder="请输入密码">
+                <input type="text" name="adminName" class="username" placeholder="请输入用户名" value="${admin.adminName }${username }">
+                <input type="password" name="adminPassword" class="password" placeholder="请输入密码" value="${admin.adminPassword }">
                 <button type="submit" >登录</button>
                 <button type="button" style="background: #FFF68F; border: #FFF68F ;color:red" onclick="signup()" >注册</button>
                 <input  class="power"  type="radio" name="power"  value="admin"/>&nbsp<span class="check">管理员</span>
@@ -51,8 +51,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <a class="twitter" href=""></a>
                 </p>
             </div> -->
-       <!--  </div>
-        <div align="center">Collect from <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a></div> -->
+      </div>
+     <!--    <div align="center">Collect from <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a></div> --> 
 
         <!-- Javascript -->
         <script src="js/jquery-1.8.2.min.js"></script>

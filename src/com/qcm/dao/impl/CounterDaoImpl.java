@@ -17,6 +17,23 @@ public class CounterDaoImpl  implements ICounterDao{
 	private SessionFactory sessionFactory;
 	@Override
 	public boolean info(String userName) {
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		try{
+			
+			String hql ="from Counter as ct  where ct.userName=?  ";
+			Query query=session.createQuery(hql);
+			query.setString(0,userName);
+			List<Admin> list=query.list();
+			if (list.size() == 0){
+				
+				return true;
+			}			
+			transaction.commit();
+			session.close();
+		}catch (Exception e) {
+			// TODO: handle exceptio	
+		}
 		return false;
 	}
 
