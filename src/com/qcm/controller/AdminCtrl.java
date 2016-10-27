@@ -20,6 +20,16 @@ public class AdminCtrl {
 
 	@Resource
 	private AdminDaoImpl a;
+	@Resource
+	private Counter counter;
+
+	public Counter getCounter() {
+		return counter;
+	}
+
+	public void setCounter(Counter counter) {
+		this.counter = counter;
+	}
 
 	public AdminDaoImpl getA() {
 		return a;
@@ -82,7 +92,22 @@ public class AdminCtrl {
 	}
 
 	@RequestMapping("/resetPwd")
-	public String resetPwd() {
-		return "/manager/tab/tab_admin_resetUserCode";
+	public String resetPwd(HttpSession session, Integer id) {
+		counter.setId(id);
+		a.resetCounterPwd(counter);
+		Integer curPage = (Integer) session.getAttribute("curPage");
+		if (curPage == null)
+			curPage = 1;
+		List<Counter> counters = a.counterList(1, Constant.PAGE_NUMBER);
+		session.setAttribute("counters", counters);
+		Map<String, Object> splitPage = new HashMap<String, Object>();
+		splitPage.put("totalNum", a.countCounter());
+
+		splitPage.put("curPage", curPage);
+		splitPage.put("maxPage", a.countCounter() / Constant.PAGE_NUMBER + 1);
+
+		session.setAttribute("splitPage", splitPage);
+		return "/manager/tab/tab_admin_manaUser";
 	}
+
 }
