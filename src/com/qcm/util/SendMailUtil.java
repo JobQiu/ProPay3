@@ -10,11 +10,11 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendMailUtil extends Thread {
-	private String from = "15158008504@163.com";
+	private String from = "m15158008504@163.com";
 	// 邮箱的用户名
-	private String username = "ProPay";
+	private String username = "m15158008504";
 	// 邮箱的密码
-	private String password = "propay";
+	private String password = "propay123";
 	// 发送邮件的服务器地址
 	private String host = "smtp.163.com";
 	// the receptor of the email
@@ -97,7 +97,7 @@ public class SendMailUtil extends Thread {
 													// from
 		message.setRecipient(Message.RecipientType.TO, // set the recipient
 				new InternetAddress(receptor));
-		message.setSubject("用户注册邮件");
+		message.setSubject(subject);
 		String info = content;
 		message.setContent(info, "text/html;charset=UTF-8");
 		message.saveChanges();
@@ -105,7 +105,4 @@ public class SendMailUtil extends Thread {
 		return message;
 	}
 
-	public static void main(String[] args) {
-
-	}
 }

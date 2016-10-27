@@ -70,6 +70,11 @@ public class AdminCtrl {
 		splitPage.put("maxPage", a.countCounter() / Constant.PAGE_NUMBER + 1);
 
 		session.setAttribute("splitPage", splitPage);
+
+		// 2.向用户发送提示，已被冻结
+		String subject = "您的用户已被冻结！";
+		String content = "";
+		
 		return "/manager/tab/tab_admin_manaUser";
 	}
 
