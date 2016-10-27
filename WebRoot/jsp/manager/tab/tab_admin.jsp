@@ -146,7 +146,7 @@ $(function(){
 </head>
 
 <body>
-<form action="<%=basePath%>jsp/manager/main2">
+<form action="<%=basePath%>news/jumpNewsPage" method="post">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td height="30" background="<%=basePath%>jsp/manager/tab/images/tab_05.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -205,35 +205,35 @@ $(function(){
             <td width="3%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center">
             </div></td>
             <td width="3%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">序号</span></div></td>
-            <td width="12%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">接收号码</span></div></td>
-            <td width="14%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">发送时间</span></div></td>
-            <td width="18%" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">邮件地址</span></div></td>
+            <td width="12%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">标题</span></div></td>
+            <td width="14%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">时间</span></div></td>
+            <td width="18%" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">摘要</span></div></td>
             <td width="23%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">内容</span></div></td>
             <td width="15%" height="22" background="<%=basePath%>jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
           </tr>
           <tbody>
-          <c:forEach items="${sessionScope.splitPage.list}" var="map">
+          <c:forEach items="${requestScope.splitPage.list}" var="map">
             <tr>
             <td height="20" bgcolor="#FFFFFF"><div align="center">
-              <input class="che" type="checkbox" name="checkbox2" value="${map.number}" />
+              <input class="che" type="checkbox" name="checkbox2" value="${map.id}" />
             </div></td>
             <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
-              <div align="center">${map.number}</div>
+              <div align="center">${map.title}</div>
             </div></td>
             <td height="20" bgcolor="#FFFFFF">
               <div align="center">
                 <span class="STYLE1">
-                  ${map.phone}<input name="hidden" type="hidden" value="${map.phone}"/>
+                  ${map.time}<input name="hidden" type="hidden" value="${map.time}"/>
                 </span>
               </div>
             </td>
             <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${map.time}</span></div></td>
-            <td bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${map.email}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${map.content}</span></div></td>
+            <td bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${map.abstract_}</span></div></td>
+            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${map.text}</span></div></td>
             <td height="20" bgcolor="#FFFFFF">
               <div align="center">
                 <span class="STYLE4">
-                  <img src="<%=basePath%>jsp/manager/tab/images/edt.gif" width="16" height="16" /><a name="${map.number}" title="edit" href="javascript:void(0)" >编辑</a>&nbsp; &nbsp;<img src="<%=basePath%>jsp/manager/tab/images/del.gif" width="16" height="16" /><a title="del" name="${map.number}" href="javascript:void(0)" >删除</a>
+                  <img src="<%=basePath%>jsp/manager/tab/images/edt.gif" width="16" height="16" /><a name="${map.title}" title="edit" href="javascript:void(0)" >编辑</a>&nbsp; &nbsp;<img src="<%=basePath%>jsp/manager/tab/images/del.gif" width="16" height="16" /><a title="del" name="${map.title}" href="javascript:void(0)" >删除</a>
                 </span>
               </div>
             </td>
@@ -251,15 +251,15 @@ $(function(){
         <td width="12" height="35"><img src="<%=basePath%>jsp/manager/tab/images/tab_18.gif" width="12" height="35" /></td>
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="STYLE4">&nbsp;&nbsp;共有${sessionScope.splitPage.totalNum} 条记录，当前第${sessionScope.splitPage.curPage}/${sessionScope.splitPage.maxPage} 页</td>
+            <td class="STYLE4">&nbsp;&nbsp;共有${requestScope.splitPage.totalNum} 条记录，当前第${requestScope.splitPage.curPage}/${requestScope.splitPage.maxPage} 页</td>
             <td><table border="0" align="right" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td width="40"><a href="<%=basePath%>jsp/manager/main3?curPage=1&selName=${sessionScope.splitPage.key}"><img src="<%=basePath%>jsp/manager/tab/images/first.gif" width="37" height="15" /></a></td>
-                  <td width="45"><a href="<%=basePath%>jsp/manager/main3?curPage=${sessionScope.splitPage.curPage - 1}&selName=${sessionScope.splitPage.key}"><img src="<%=basePath%>jsp/manager/tab/images/back.gif" width="43" height="15" /></a></td>
-                  <td width="45"><a href="<%=basePath%>jsp/manager/main3?curPage=${sessionScope.splitPage.curPage + 1}&selName=${sessionScope.splitPage.key}"><img src="<%=basePath%>jsp/manager/tab/images/next.gif" width="43" height="15" /></a></td>
-                  <td width="40"><a href="<%=basePath%>jsp/manager/main3?curPage=${sessionScope.splitPage.maxPage}&selName=${sessionScope.splitPage.key}"><img src="<%=basePath%>jsp/manager/tab/images/last.gif" width="37" height="15" /></a></td>
+                  <td width="40"><a href="<%=basePath%>news/showNewsPage?curPage=1&selName=${requestScope.splitPage.titleKey}"><img src="<%=basePath%>jsp/manager/tab/images/first.gif" width="37" height="15" /></a></td>
+                  <td width="45"><a href="<%=basePath%>news/showNewsPage?curPage=${requestScope.splitPage.curPage - 1}&selName=${requestScope.splitPage.titleKey}"><img src="<%=basePath%>jsp/manager/tab/images/back.gif" width="43" height="15" /></a></td>
+                  <td width="45"><a href="<%=basePath%>news/showNewsPage?curPage=${requestScope.splitPage.curPage + 1}&selName=${requestScope.splitPage.titleKey}"><img src="<%=basePath%>jsp/manager/tab/images/next.gif" width="43" height="15" /></a></td>
+                  <td width="40"><a href="<%=basePath%>news/showNewsPage?curPage=${requestScope.splitPage.maxPage}&selName=${requestScope.splitPage.titleKey}"><img src="<%=basePath%>jsp/manager/tab/images/last.gif" width="37" height="15" /></a></td>
                   <td width="100"><div align="center"><span class="STYLE1">转到第
-                    <input name="textfield" type="text" size="4" style="height:12px; width:20px; border:1px solid #999999;" />
+                    <input name="curPage1" type="text" size="4" style="height:12px; width:20px; border:1px solid #999999;" /> 
                     页 </span></div></td>
                   <td width="40"><button type="submit" ><img src="<%=basePath%>jsp/manager/tab/images/go.gif" width="37" height="15" /></button></td>
                 </tr>
@@ -271,8 +271,12 @@ $(function(){
     </table></td>
   </tr>
 </table>
-<input type="hidden" name="key" value="${sessionScope.splitPage.key}" />
+<input type="hidden" name="selName" value="${requestScope.splitPage.titleKey}" />
 </form>
-
+<form action="<%=basePath%>news/jumpNewsPage?curPage1=1" method="post">
+  <label>新闻标题:</label><input id="key" type="text" name="selName" value="${requestScope.splitPage.titleKey}" /><input type="submit" value="查询"/>
+</form>
 </body>
+
+
 </html>

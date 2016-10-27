@@ -75,4 +75,17 @@
 	</bean>
 	
 	<bean id="counter" class="com.qcm.entity.Counter"></bean>
+	
+	<!-- 新闻部分   -->
+	<bean id="news" class="com.qcm.entity.News"></bean>
+	<bean id="splitPage" class="com.qcm.entity.SplitPage" ></bean>
+	<bean id="newsManageCtrl" class="com.qcm.controller.NewsManageCtrl">
+	  <property name="splitPage" ref="splitPage"></property>
+	  <property name="ndi" ref="newsDao"></property>
+	</bean>
+	<bean id="newsDao" class="com.qcm.dao.impl.NewsDaoImpl">
+	  <property name="sessionFactory" ref="sessionFactory"></property>
+	  <property name="news" ref="news"></property>
+	</bean>  
+	
 </beans>
