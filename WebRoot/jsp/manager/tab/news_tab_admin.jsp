@@ -119,12 +119,12 @@ $(function(){
       }
     });
     var number = ids.substring(1);
-    $.post(basePath + 'manager/del',{number:number});
+    $.post('<%=basePath%>news/delNews',{number:number});
   });
   $("a[title=del]").click(function(){
     var id = $(this).attr("name");
     $(this).parent().parent().parent().parent().remove();
-    $.post(basePath + 'manager/del',{number:id});
+    $.post('<%=basePath%>news/delNews',{number:id});
     //window.location.reload();
     });
 

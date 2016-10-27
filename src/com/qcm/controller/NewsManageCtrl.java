@@ -69,6 +69,9 @@ public class NewsManageCtrl {
 		ndi.addNews(news);
 		model.addAttribute("Editinfo","修改成功");
 	}
+	public void delNews(String number){
+		ndi.delNews(number);
+	}
 	
 	public SplitPage getSplitPage() {
 		return splitPage;

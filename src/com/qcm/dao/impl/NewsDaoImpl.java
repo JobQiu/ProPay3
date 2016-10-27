@@ -74,7 +74,24 @@ public class NewsDaoImpl {
 		session.close();
 	}
 
+	/*
+	 * 新闻删除
+	 */
+	public void delNews(String number) {
+		// 开启session
+		Session session = sessionFactory.openSession();
+		// 执行数据操作
+		String[] ids = number.split(",");
+		for(int i = 0;i < ids.length;i++){
+			int id = Integer.parseInt(ids[i]);
+			news.setId(id);
+			session.delete(news);
+		}
+		// 关闭session及session工厂
+		session.close();
+	}
 
+	
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
