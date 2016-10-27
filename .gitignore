@@ -1,3 +1,4 @@
 .settings/org.jboss.tools.jst.web.xml
 *.jar
 *.class
+.classpath
