@@ -6,3 +6,6 @@ WebRoot/WEB-INF/classes/com/qcm/controller/AdminCtrl.class
 *.class
 .classpath
 *.classpath
+*.jar
+*.class
+.classpath
