@@ -78,8 +78,5 @@
 	<bean id="counterDaoImpl" class="com.qcm.dao.impl.CounterDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean id="loginAndRegister" class="com.qcm.controller.LoginAndRegister">
-		<property name="counterDaoImpl" ref="counterDaoImpl"></property>
-		<property name="a" ref="adminDaoImpl"></property>
-	</bean>
+	
 </beans>
