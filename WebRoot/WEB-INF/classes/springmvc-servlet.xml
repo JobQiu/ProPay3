@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:context="http://www.springframework.org/schema/context"
@@ -75,6 +75,7 @@
 	</bean>
 	
 	<bean id="counter" class="com.qcm.entity.Counter"></bean>
+
 	
 	<!-- 新闻部分   -->
 	<bean id="news" class="com.qcm.entity.News"></bean>
@@ -89,4 +90,14 @@
 	  <property name="news" ref="news"></property>
 	</bean>  
 	
+
+	<bean id="counterDaoImpl" class="com.qcm.dao.impl.CounterDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="loginAndRegister" class="com.qcm.controller.LoginAndRegister">
+		<property name="counterDaoImpl" ref="counterDaoImpl"></property>
+		<property name="adminDaoImpl" ref="adminDaoImpl"></property>
+	</bean>
+
+
 </beans>

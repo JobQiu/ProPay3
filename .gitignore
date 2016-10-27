@@ -1,1 +1,11 @@
 .settings/org.jboss.tools.jst.web.xml
+.classpath
+*.class
+WebRoot/WEB-INF/classes/com/qcm/controller/AdminCtrl.class
+*.class
+*.class
+.classpath
+*.classpath
+*.jar
+*.class
+.classpath

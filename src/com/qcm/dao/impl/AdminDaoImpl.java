@@ -117,13 +117,14 @@ public class AdminDaoImpl implements IAdminDao {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
+		String newCode = counter.getUserPassword();
 		// 1. 获得用户
 		List<Counter> counters = session.createQuery(
 				"select distinct c from Counter c where id = "
 						+ counter.getId()).list();
 		if (counters.size() > 0) {
 			Counter counter2 = counters.get(0);
-			counter2.setUserPassword(PwdSecurityUtil.transMd5("123456",
+			counter2.setUserPassword(PwdSecurityUtil.transMd5(newCode,
 					Constant.PWD_COUNT));
 			System.out.println("密码是" + counter2.getUserPassword());
 			session.update(counter2);
