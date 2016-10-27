@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:context="http://www.springframework.org/schema/context"
@@ -14,7 +14,25 @@
     <mvc:default-servlet-handler />
  
     <!-- if you use annotation you must configure following setting -->
-    <mvc:annotation-driven />
+   <mvc:annotation-driven >
+    <mvc:message-converters register-defaults="true">
+            <!-- 配置Fastjson支持 -->
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json</value>
+                    </list>
+                </property>
+                <property name="features">
+                    <list>
+                        <value>WriteMapNullValue</value>
+                        <value>QuoteFieldNames</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+        </mvc:annotation-driven>
     <!-- resouces元素：阻止控制器调用。一般用来对静态资源处理，不通过dispatcher servlet -->
     <!--  <mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
      <mvc:resources location="/" mapping="/*.html"></mvc:resources> -->
@@ -82,4 +100,5 @@
 		<property name="counterDaoImpl" ref="counterDaoImpl"></property>
 		<property name="adminDaoImpl" ref="adminDaoImpl"></property>
 	</bean>
+
 </beans>

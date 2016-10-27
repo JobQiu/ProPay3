@@ -61,4 +61,10 @@ public interface IAdminDao {
 	 * @author 裘丛民
 	 * */
 	public Counter getCounterById(Integer id);
+	/**
+	 * search the user using the fuzzy search
+	 * 
+	 * @author qcm
+	 * */
+	public List<Counter> searchFuzzy(String userCounter, String cardName);
 }

@@ -1,5 +1,6 @@
 package com.qcm.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qcm.constant.Constant;
 import com.qcm.dao.impl.AdminDaoImpl;
@@ -148,6 +150,19 @@ public class AdminCtrl {
 		counter.setUserPassword(password);
 		a.resetCounterPwd(counter);
 		return "/manager/tab/success";
+	}
+
+	@RequestMapping("/searchC")
+	public @ResponseBody
+	List<String> searchC(String counter, String name) {
+		System.out.println(name + "the left is name and the right is counter "
+				+ counter);
+		List<Counter> counters = a.searchFuzzy(counter, name);
+		List<String> strings = new ArrayList<String>();
+		for (Counter counter2 : counters) {
+			strings.add(counter2.toString());
+		}
+		return strings;
 	}
 
 }

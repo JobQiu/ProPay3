@@ -13,6 +13,7 @@ import com.qcm.dao.IAdminDao;
 import com.qcm.entity.Admin;
 import com.qcm.entity.Counter;
 import com.qcm.util.PwdSecurityUtil;
+import com.qcm.util.StringUtil;
 
 public class AdminDaoImpl implements IAdminDao {
 	private SessionFactory sessionFactory;
@@ -49,14 +50,19 @@ public class AdminDaoImpl implements IAdminDao {
 				"classpath:springmvc-servlet.xml");
 		AdminDaoImpl a = applicationContext.getBean(AdminDaoImpl.class,
 				"adminDaoImpl");
-		List<Admin> admins = a.getAdmins();
-		System.out.println("用户的数量为r" + a.countCounter());
-		for (Admin admin : admins) {
-			System.out.println(admin.getAdminName());
+		// List<Admin> admins = a.getAdmins();
+		// System.out.println("用户的数量为r" + a.countCounter());
+		// for (Admin admin : admins) {
+		// System.out.println(admin.getAdminName());
+		// }
+		// Counter counter = new Counter();
+		// counter.setId(1);
+		// a.freezeCounter(1);
+		List<Counter> counters = a.searchFuzzy("", "qc");
+		for (Counter counter : counters) {
+			System.out.println(counter.toString());
 		}
-		Counter counter = new Counter();
-		counter.setId(1);
-		a.freezeCounter(1);
+
 	}
 
 	public boolean checkAdmin(Admin admin) {
@@ -189,5 +195,31 @@ public class AdminDaoImpl implements IAdminDao {
 		transaction.commit();
 		session.close();
 		return counter;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Counter> searchFuzzy(String userName, String cardName) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		List<Counter> counters = null;
+		if (StringUtil.isEmpty(userName)) {
+			counters = session.createQuery(
+					"select distinct c from Counter c where card_name like '%"
+							+ cardName + "%'").list();
+		}else if (StringUtil.isEmpty(cardName)) {
+			counters = session.createQuery(
+					"select distinct c from Counter c where user_name like '%"
+							+ userName + "%'").list();
+		} else {
+			counters = session.createQuery(
+					"select distinct c from Counter c where card_name like '%"
+							+ cardName + "%' or user_name like '%" + userName
+							+ "%'").list();
+		}
+		transaction.commit();
+		session.close();
+		return counters;
 	}
 }

@@ -143,7 +143,43 @@ $(function(){
 
 
 </script>
-
+<script type="text/javascript">
+$(function() {
+	$("#searchText").keyup(function(){
+		$.ajax({
+			url:"<%=basePath%>admin/searchC",
+			type:"post",
+			data:{"counter":$("#searchText").val(),"name":$("#name").val()},
+			success:function(data){
+			var userJson = JSON.parse(data);
+			$("#pResult").html("");
+			for(var js2 in userJson){
+				$("#pResult").append(userJson[js2]+"<br/>");
+			}
+			}
+		})
+	})
+	
+	$("#name").keyup(function(){
+		$.ajax({
+			url:"<%=basePath%>admin/searchC",
+			type:"post",
+			data:{"counter":$("#searchText").val(),"name":$("#name").val()},
+			success:function(data){
+			//alert(data.size);
+			var userJson = JSON.parse(data);
+			$("#pResult").html("");
+			for(var js2 in userJson){
+				$("#pResult").append(userJson[js2]+"<br/>");
+			}
+			
+ 			
+ 			//alert("<p>"+userJson.adminName+"\t"+userJson.adminPassword+"</p>");
+			}
+		})
+	})
+})
+</script>
 </head>
 
 <body>
@@ -299,9 +335,9 @@ $(function(){
 </form>
 <form>
 
-账户：<input type="text" name="user_counter">
-姓名：<input type="text" name="card_name">
-<input type="submit" value="搜索"/>
+用户名：<input id="searchText" type="text" name="user_counter">
+姓名：<input id="name" type="text" name="card_name"><br/>
+<p id="pResult">weq</p>
 </form>
 </body>
 </html>

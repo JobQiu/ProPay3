@@ -9,3 +9,5 @@ WebRoot/WEB-INF/classes/com/qcm/controller/AdminCtrl.class
 *.jar
 *.class
 .classpath
+*.class
+WebRoot/WEB-INF/classes/com/qcm/controller/AdminCtrl.class
