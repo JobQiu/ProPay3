@@ -82,6 +82,7 @@
 	<bean id="newsManageCtrl" class="com.qcm.controller.NewsManageCtrl">
 	  <property name="splitPage" ref="splitPage"></property>
 	  <property name="ndi" ref="newsDao"></property>
+	  <property name="news" ref="news"></property>
 	</bean>
 	<bean id="newsDao" class="com.qcm.dao.impl.NewsDaoImpl">
 	  <property name="sessionFactory" ref="sessionFactory"></property>

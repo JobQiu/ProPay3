@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 
 <%
 String path = request.getContextPath();
@@ -32,23 +32,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <div><span style="color:red">${Editinfo}</span></div>
     
-    <form name="form2" action="<%=basePath%>jsp/jsp/manager/tab/editTab" >
+    <form name="form2" action="<%=basePath%>news/editNews" >
       <table>
         <tr>
           <th width="3%" height="22" background="<%=basePath%>jsp/jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">序号</span></div></th>
-          <th width="12%" height="22" background="<%=basePath%>jsp/jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">接收号码</span></div></th>
-          <th width="14%" height="22" background="<%=basePath%>jsp/jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">发送时间</span></div></th>
-          <th width="18%" background="<%=basePath%>jsp/jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">邮件地址</span></div></th>
+          <th width="12%" height="22" background="<%=basePath%>jsp/jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">标题</span></div></th>
+          <th width="14%" height="22" background="<%=basePath%>jsp/jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">时间</span></div></th>
+          <th width="18%" background="<%=basePath%>jsp/jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">摘要</span></div></th>
           <th width="23%" height="22" background="<%=basePath%>jsp/jsp/manager/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">内容</span></div></th>
         </tr>
         <tr>
-            <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1"><label>number</label><input name="number" type="hidden" value="number%>"/>
+            <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1"><label>${news.id}</label><input name="number" type="hidden" value="${news.id}"/>
               <div align="center">  </div>
             </div></td>
-            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><input name="phone" type="text" value="phone"/></span></div></td>
-            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><input name="time" type="text" value="time"/></span></div></td>
-            <td bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><input name="email" type="text" value="email%>"/></span></div></td>
-            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><input name="content" type="text" value="content%>"/></span></div></td>
+            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><input name="phone" type="text" value="${news.title}"/></span></div></td>
+            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><input name="time" type="text" value="${news.time}"/></span></div></td>
+            <td bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><input name="email" type="text" value="${news.abstract_}"/></span></div></td>
+            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><input name="content" type="text" value="${news.text}"/></span></div></td>
         </tr>
       </table>
       <input type="submit" value="确定"/> <input type="button" value="退出" onclick="esc()"/>

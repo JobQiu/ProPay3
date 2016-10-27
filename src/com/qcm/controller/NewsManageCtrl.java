@@ -1,11 +1,14 @@
 package com.qcm.controller;
 
+import java.sql.Timestamp;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.qcm.dao.impl.NewsDaoImpl;
+import com.qcm.entity.News;
 import com.qcm.entity.SplitPage;
 
 @Controller
@@ -14,6 +17,7 @@ public class NewsManageCtrl {
 
 	private SplitPage splitPage;
 	private NewsDaoImpl ndi;
+	private News news;
 
 	@RequestMapping("/showNews")
 	public String showNews(Model model) {
@@ -45,6 +49,27 @@ public class NewsManageCtrl {
 		return result;
 	}
 	
+	@RequestMapping("/addNews")
+	public void addNews(String title,Timestamp time,String abstract_,String text,Model model){
+		news.setTitle(title);
+		news.setTime(time);
+		news.setAbstract_(abstract_);
+		news.setText(text);
+		ndi.addNews(news);
+		model.addAttribute("Addinfo","添加成功");
+	}
+	
+	@RequestMapping("editNews")
+	public void editNews(int id,String title,Timestamp time,String abstract_,String text,Model model){
+		news.setId(id);
+		news.setTitle(title);
+		news.setTime(time);
+		news.setAbstract_(abstract_);
+		news.setText(text);
+		ndi.addNews(news);
+		model.addAttribute("Editinfo","修改成功");
+	}
+	
 	public SplitPage getSplitPage() {
 		return splitPage;
 	}
@@ -59,6 +84,14 @@ public class NewsManageCtrl {
 
 	public void setNdi(NewsDaoImpl ndi) {
 		this.ndi = ndi;
+	}
+
+	public News getNews() {
+		return news;
+	}
+
+	public void setNews(News news) {
+		this.news = news;
 	}
 
 }
