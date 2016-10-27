@@ -10,11 +10,11 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendMailUtil extends Thread {
-	private String from = "m15158008504@163.com";
+	private String from = "qcm3771787@163.com";
 	// 邮箱的用户名
-	private String username = "m15158008504";
+	private String username = "qcm3771787";
 	// 邮箱的密码
-	private String password = "propay123";
+	private String password = "3771787";
 	// 发送邮件的服务器地址
 	private String host = "smtp.163.com";
 	// the receptor of the email

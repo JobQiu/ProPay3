@@ -73,7 +73,7 @@ public class AdminCtrl {
 		session.setAttribute("splitPage", splitPage);
 
 		// 2.向用户发送提示，已被冻结
-		String subject = "您的用户已被冻结！";
+		String subject = "Your counter has been freezed!";
 		Counter counter2 = a.getCounterById(id);
 		String content = "亲爱的" + counter2.getCardName()
 				+ ",您的账户已被冻结，请与管理员联系。";
@@ -107,7 +107,6 @@ public class AdminCtrl {
 	@RequestMapping("/resetPwd")
 	public String resetPwd(HttpSession session, Integer id) {
 		counter.setId(id);
-		a.resetCounterPwd(counter);
 		Integer curPage = (Integer) session.getAttribute("curPage");
 		if (curPage == null)
 			curPage = 1;
@@ -120,7 +119,35 @@ public class AdminCtrl {
 		splitPage.put("maxPage", a.countCounter() / Constant.PAGE_NUMBER + 1);
 
 		session.setAttribute("splitPage", splitPage);
+
+		// 2.向用户发送提示，已被冻结
+		String subject = "ProPra Reset Code";
+		Counter counter2 = a.getCounterById(id);
+		String content = "亲爱的" + counter2.getCardName()
+				+ ",请点此<a href=\"http://localhost:8080/test/admin/reset?id="
+				+ id + "\">重置密码</a>";
+		String receptor = counter2.getUserEmail();
+		System.out.println("email address is \t" + receptor);
+		SendMailUtil sendMailUtil = new SendMailUtil(receptor, subject, content);
+		sendMailUtil.start();
+
 		return "/manager/tab/tab_admin_manaUser";
+	}
+
+	@RequestMapping("reset")
+	public String reset(HttpSession httpSession, Integer id) {
+		System.out.println("id=" + id);
+		Counter counter2 = a.getCounterById(id);
+		httpSession.setAttribute("counter", counter2);
+		return "/manager/tab/resetPwd";
+	}
+
+	@RequestMapping("resetP")
+	public String resetP(HttpSession httpSession, String password) {
+		counter = (Counter) httpSession.getAttribute("counter");
+		counter.setUserPassword(password);
+		a.resetCounterPwd(counter);
+		return "/manager/tab/success";
 	}
 
 }
