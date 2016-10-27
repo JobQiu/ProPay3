@@ -119,8 +119,8 @@ public class AdminDaoImpl implements IAdminDao {
 		Transaction transaction = session.beginTransaction();
 		// 1. 获得用户
 		List<Counter> counters = session.createQuery(
-				"select distinct c from Counter c where user_name = "
-						+ counter.getUserName()).list();
+				"select distinct c from Counter c where id = "
+						+ counter.getId()).list();
 		if (counters.size() > 0) {
 			Counter counter2 = counters.get(0);
 			counter2.setUserPassword(PwdSecurityUtil.transMd5("123456",

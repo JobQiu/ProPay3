@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.qcm.util.StringUtil;
+
 /**
  * Counter entity. @author MyEclipse Persistence Tools
  */
@@ -18,17 +20,17 @@ public class Counter implements java.io.Serializable {
 	private String sex;
 	private String address;
 	private String cardNumber;
-	private Double balance;
-	private Integer state;
-	private String stateToString;
-	private String userName;
-	private String userPassword;
-	private String userQuestion;
-	private String userAnswer;
-	private String userEmail;
-	private String userPhone;
-	private String imageAddress;
-	private Date cardBirthday;
+	private Double balance = 0.0;
+	private Integer state = 1;
+	private String stateToString = "已启用";
+	private String userName = "test";
+	private String userPassword = "123";
+	private String userQuestion = "123";
+	private String userAnswer = "123";
+	private String userEmail = "123";
+	private String userPhone = "123";
+	private String imageAddress = "123";
+	private Date cardBirthday = new Date();
 	private Set businessesForUserCounter = new HashSet(0);
 	private Set businessesForOtherCounter = new HashSet(0);
 
@@ -103,6 +105,8 @@ public class Counter implements java.io.Serializable {
 	}
 
 	public String getCardName() {
+		if (StringUtil.isEmpty(cardName))
+			this.cardName = "";
 		return this.cardName;
 	}
 
@@ -111,6 +115,8 @@ public class Counter implements java.io.Serializable {
 	}
 
 	public String getSex() {
+		if (sex == null || "".equals(sex))
+			this.sex = "1";
 		return this.sex;
 	}
 
@@ -119,6 +125,8 @@ public class Counter implements java.io.Serializable {
 	}
 
 	public String getAddress() {
+		if (StringUtil.isEmpty(address))
+			this.address = "";
 		return this.address;
 	}
 
@@ -127,6 +135,8 @@ public class Counter implements java.io.Serializable {
 	}
 
 	public String getCardNumber() {
+		if (StringUtil.isEmpty(cardNumber))
+			this.cardNumber = "";
 		return this.cardNumber;
 	}
 
@@ -135,6 +145,9 @@ public class Counter implements java.io.Serializable {
 	}
 
 	public Double getBalance() {
+		if (balance == null)
+			this.balance = 0.0;
+
 		return this.balance;
 	}
 
@@ -143,6 +156,8 @@ public class Counter implements java.io.Serializable {
 	}
 
 	public Integer getState() {
+		if (this.state == null)
+			this.state = 0;
 		return this.state;
 	}
 
@@ -151,6 +166,8 @@ public class Counter implements java.io.Serializable {
 	}
 
 	public String getUserName() {
+		if (StringUtil.isEmpty(this.userName))
+			this.userName = "123";
 		return this.userName;
 	}
 
@@ -159,6 +176,8 @@ public class Counter implements java.io.Serializable {
 	}
 
 	public String getUserPassword() {
+		if (StringUtil.isEmpty(this.userPassword))
+			this.userPassword = "123";
 		return this.userPassword;
 	}
 
@@ -167,6 +186,8 @@ public class Counter implements java.io.Serializable {
 	}
 
 	public String getUserQuestion() {
+		if (StringUtil.isEmpty(this.userQuestion))
+			this.userQuestion = "123";
 		return this.userQuestion;
 	}
 
@@ -175,6 +196,8 @@ public class Counter implements java.io.Serializable {
 	}
 
 	public String getUserAnswer() {
+		if (StringUtil.isEmpty(this.userAnswer))
+			this.userAnswer = "123";
 		return this.userAnswer;
 	}
 
@@ -191,6 +214,8 @@ public class Counter implements java.io.Serializable {
 	}
 
 	public String getUserPhone() {
+		if (StringUtil.isEmpty(this.userPhone))
+			this.userPhone = "123";
 		return this.userPhone;
 	}
 
@@ -207,6 +232,8 @@ public class Counter implements java.io.Serializable {
 	}
 
 	public Date getCardBirthday() {
+		if (this.cardBirthday == null)
+			this.cardBirthday = new Date();
 		return this.cardBirthday;
 	}
 

@@ -74,5 +74,5 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	
+	<bean id="counter" class="com.qcm.entity.Counter"></bean>
 </beans>
