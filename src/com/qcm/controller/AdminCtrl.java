@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.qcm.constant.Constant;
 import com.qcm.dao.impl.AdminDaoImpl;
 import com.qcm.entity.Counter;
+import com.qcm.util.SendMailUtil;
 
 @Controller
 @RequestMapping("/admin")
@@ -73,8 +74,15 @@ public class AdminCtrl {
 
 		// 2.向用户发送提示，已被冻结
 		String subject = "您的用户已被冻结！";
-		String content = "";
+		Counter counter2 = a.getCounterById(id);
+		String content = "亲爱的" + counter2.getCardName()
+				+ ",您的账户已被冻结，请与管理员联系。";
+		String receptor = counter2.getUserEmail();
+		System.out.println("email address is \t" + receptor);
+		SendMailUtil sendMailUtil = new SendMailUtil(receptor, subject, content);
+		sendMailUtil.start();
 		
+
 		return "/manager/tab/tab_admin_manaUser";
 	}
 

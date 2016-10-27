@@ -50,6 +50,15 @@ public interface IAdminDao {
 
 	/**
 	 * 统计用户数量
+	 * 
+	 * @author 裘丛民
 	 * */
 	public int countCounter();
+
+	/**
+	 * 根据id获取用户
+	 * 
+	 * @author 裘丛民
+	 * */
+	public Counter getCounterById(Integer id);
 }

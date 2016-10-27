@@ -176,4 +176,17 @@ public class AdminDaoImpl implements IAdminDao {
 		session.close();
 		return counters.size();
 	}
+
+	@Override
+	public Counter getCounterById(Integer id) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+
+		Counter counter = session.get(Counter.class, id);
+
+		transaction.commit();
+		session.close();
+		return counter;
+	}
 }
