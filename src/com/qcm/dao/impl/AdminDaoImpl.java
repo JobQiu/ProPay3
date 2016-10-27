@@ -15,6 +15,7 @@ import com.qcm.entity.Counter;
 import com.qcm.util.PwdSecurityUtil;
 
 public class AdminDaoImpl implements IAdminDao {
+
 	private SessionFactory sessionFactory;
 	/**
 	 * 查看所有的用户
