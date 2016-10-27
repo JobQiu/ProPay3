@@ -80,6 +80,6 @@
 	</bean>
 	<bean id="loginAndRegister" class="com.qcm.controller.LoginAndRegister">
 		<property name="counterDaoImpl" ref="counterDaoImpl"></property>
-		<property name="adminDaoImpl" ref="adminDaoImpl"></property>
+		<property name="a" ref="adminDaoImpl"></property>
 	</bean>
 </beans>
