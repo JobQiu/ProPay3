@@ -215,7 +215,7 @@ public class AdminDaoImpl implements IAdminDao {
 		} else {
 			counters = session.createQuery(
 					"select distinct c from Counter c where card_name like '%"
-							+ cardName + "%' or user_name like '%" + userName
+							+ cardName + "%' and user_name like '%" + userName
 							+ "%'").list();
 		}
 		transaction.commit();

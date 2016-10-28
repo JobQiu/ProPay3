@@ -1,0 +1,42 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+# Conflicts:
+#	WebRoot/WEB-INF/classes/springmvc-servlet.xml
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 4 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   .gitignore
+#	new file:   WebRoot/WEB-INF/classes/com/qcm/entity/News.hbm.xml
+#	modified:   WebRoot/jsp/manager/left_admin.jsp
+#	new file:   WebRoot/jsp/manager/news_admin.jsp
+#	new file:   WebRoot/jsp/manager/news_center_admin.jsp
+#	new file:   WebRoot/jsp/manager/news_middel_admin.jsp
+#	modified:   WebRoot/jsp/manager/tab/addTab.jsp
+#	modified:   WebRoot/jsp/manager/tab/editTab.jsp
+#	new file:   WebRoot/jsp/manager/tab/news_tab_admin.jsp
+#	modified:   WebRoot/jsp/manager/tab/tab_admin.jsp
+#	modified:   src/com/qcm/controller/AdminCtrl.java
+#	new file:   src/com/qcm/controller/NewsManageCtrl.java
+#	new file:   src/com/qcm/dao/INewsDao.java
+#	modified:   src/com/qcm/dao/impl/AdminDaoImpl.java
+#	new file:   src/com/qcm/dao/impl/NewsDaoImpl.java
+#	new file:   src/com/qcm/entity/News.hbm.xml
+#	new file:   src/com/qcm/entity/News.java
+#	new file:   src/com/qcm/entity/SplitPage.java
+#	modified:   src/springmvc-servlet.xml
+#
+

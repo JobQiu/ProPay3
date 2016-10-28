@@ -11,3 +11,7 @@ WebRoot/WEB-INF/classes/com/qcm/controller/AdminCtrl.class
 .classpath
 *.class
 WebRoot/WEB-INF/classes/com/qcm/controller/AdminCtrl.class
+*.class
+*.class
+WebRoot/WEB-INF/classes/com/qcm/dao/IAdminDao.class
+*.class

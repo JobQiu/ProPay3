@@ -38,8 +38,8 @@ public class AdminCtrl {
 		return a;
 	}
 
-	public void setA(AdminDaoImpl a) {
-		this.a = a;
+	public void setA(AdminDaoImpl adminDaoImpl) {
+		this.a = adminDaoImpl;
 	}
 
 	@RequestMapping("/showUsers")
