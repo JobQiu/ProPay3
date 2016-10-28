@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.qcm.constant.Constant;
 import com.qcm.dao.impl.AdminDaoImpl;
 import com.qcm.entity.Counter;
+import com.qcm.util.ObjectAnalyzer;
 import com.qcm.util.SendMailUtil;
 
 @Controller
@@ -160,7 +161,7 @@ public class AdminCtrl {
 		List<Counter> counters = a.searchFuzzy(counter, name);
 		List<String> strings = new ArrayList<String>();
 		for (Counter counter2 : counters) {
-			strings.add(counter2.toString());
+			strings.add(new ObjectAnalyzer().toString(counter2));
 		}
 		return strings;
 	}

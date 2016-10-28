@@ -1,7 +1,7 @@
 .settings/org.jboss.tools.jst.web.xml
 .classpath
 *.class
-WebRoot/WEB-INF/classes/com/qcm/controller/AdminCtrl.class
+WebRoot/WEB-INF/classes/*
 *.class
 *.class
 .classpath
@@ -15,3 +15,5 @@ WebRoot/WEB-INF/classes/com/qcm/controller/AdminCtrl.class
 *.class
 WebRoot/WEB-INF/classes/com/qcm/dao/IAdminDao.class
 *.class
+WebRoot/WEB-INF/classes/com/qcm/controller/AdminCtrl.class
+WebRoot/WEB-INF/classes/com/qcm/entity/Counter.class

@@ -267,14 +267,18 @@ public class Counter implements java.io.Serializable {
 		}
 	}
 
-	public String toString() {
-		return "id=" + this.id.toString() + "\t" + "account="
-				+ this.userCounter.toString() + "\t" + "balance="
-				+ this.balance.toString() + "\t" + "realname=" + this.cardName
-				+ "\t" + "address=" + this.address + "\t" + "id_No="
-				+ this.cardNumber + "\t" + "tele=" + this.userPhone + "\t"
-				+ "state=" + this.getStateToString();
-
+	public String tname() {
+		return "yser";
 	}
+	public String toString2() {
+		return "id=" + this.id.toString();
+	}
+
+	public static void main(String[] args) {
+		Counter counter = new Counter();
+		counter.setId(1);
+		System.out.println(counter.toString2());
+	}
+
 
 }
